@@ -1,0 +1,41 @@
+﻿<Window x:Class="iHotel.Views.EditableReservations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        mc:Ignorable="d"
+        Title="EditableReservations" Height="750" Width="800" Background="#9a67ea">
+    <Window.DataContext>
+        <local:ReservationViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid>
+            <Border Background="#2e3137" CornerRadius="20" Margin="20">
+
+                <StackPanel Margin="20">
+                    <Label Content="Reservations" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                    <Separator></Separator>
+                    <ListBox Name="listReservations" ItemsSource="{Binding ReservationsList}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <Label Content="{Binding name}"/>
+                                    <Label Content="{Binding phone}"/>
+                                    <Label Content="{Binding check_in_date}"/>
+                                    <Label Content="{Binding check_out_date}"/>
+                                    <Label Content="{Binding state}"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
+                    <Button Content="Modify Status" Width="200" Height="30" Command="{Binding UpdateCommand}" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"
+                            CommandParameter="{Binding ElementName=listReservations, Path=SelectedItem}" />
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+    </Grid>
+</Window>

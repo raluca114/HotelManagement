@@ -1,0 +1,48 @@
+﻿<Window x:Class="iHotel.Views.Facilities"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        xmlns:localConverter="clr-namespace:iHotel.Converters"
+        Title="Facilities Edit" Height="450" Width="800" Background="#9a67ea">
+
+    <Window.DataContext>
+        <local:FacilityViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Border Background="#2e3137" CornerRadius="20" Margin="20">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <localConverter:FacilityConvert x:Key="facilityConvert" />
+                </StackPanel.Resources>
+                <WrapPanel>
+                    <Button Content="Add" Margin="60 10" Width="120" Background="#545d6a" Foreground="White" FontSize="18" FontWeight="Bold" Command="{Binding AddCommand}">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource facilityConvert}">
+                                <Binding ElementName="facilityName" Path="Text"/>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button Content="Modifica" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Width="120" FontWeight="Bold" Command="{Binding UpdateCommand}" 
+                    CommandParameter="{Binding ElementName=facilityGrid, Path=SelectedItem}" />
+                    <Button Content="Sterge" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18" Width="120" FontWeight="Bold" Command="{Binding DeleteCommand}" 
+                    CommandParameter="{Binding ElementName=facilityGrid, Path=SelectedItem}" />
+                </WrapPanel>
+                <WrapPanel Margin="0,15,0,0">
+                    <Label Width="150" FontSize="15" Foreground="White">Facility:</Label>
+                    <TextBox Name="facilityName" Width="200" HorizontalAlignment="Left" Background="#545d6a" Foreground="Wheat" FontSize="18"
+                     Text ="{Binding ElementName=facilityGrid, Path=SelectedItem.facility1, UpdateSourceTrigger=PropertyChanged}" />
+                </WrapPanel>
+
+                <WrapPanel>
+                    <Label Name="lblMessage" Content="{Binding ErrorMessage}" Height="30" FontSize="15" Foreground="Red"/>
+                </WrapPanel>
+                <DataGrid Name="facilityGrid"  Margin="0,15,0,0" AutoGenerateColumns="False" Height="240"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding FacilityList }" Width="740">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Facility" Binding="{Binding facility1}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb89d583cdab473eb282baad74411658" Name="Diagram1">
+        <EntityTypeShape EntityType="HotelModel.Access" Width="1.5" PointX="2.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Disponibility" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Facility" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Offer" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Price" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Room" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.RoomFacility" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.RoomType" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.Service" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HotelModel.User" Width="1.5" PointX="5" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="HotelModel.FK_User_Access" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_Room_Disponibility" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_RoomFacilities_Facility" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_Offer_Price" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_Offer_RoomType" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_RoomType_Price" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_Room_RoomType" ManuallyRouted="false" />
+        <AssociationConnector Association="HotelModel.FK_RoomFacilities_Room" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HotelModel.Reservation" Width="1.5" PointX="7.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,62 @@
+﻿<Window x:Class="iHotel.Views.ReservationUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        mc:Ignorable="d"
+        Title="ReservationUser" Height="750" Width="800" Background="#9a67ea">
+    <Window.DataContext>
+        <local:ReservationViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid>
+            <Border Background="#2e3137" CornerRadius="20" Margin="20">
+                
+                <StackPanel Margin="20">
+                    
+                    <Label Content="Reservation options" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                    <Separator></Separator>
+                    <Label Content="Name" Foreground="White"/>
+                    <TextBox Name="txtName" Background="#545d6a" Foreground="Wheat" FontSize="18"/>
+                    <Label Content="Phone number" Foreground="White"/>
+                    <TextBox Name="txtPhone" Background="#545d6a" Foreground="Wheat" FontSize="18"/>
+                    <Label Foreground="LightGray" FontSize="12">Reservation Check In Date</Label>
+                    <DatePicker Background="#545d6a"></DatePicker>
+                    <Separator/>
+                    <Label Foreground="LightGray" FontSize="12" Height="24">Reservation Check Out Date</Label>
+                    <Separator/>
+                    <DatePicker Background="#545d6a"></DatePicker>
+                    
+                    <Label Content="Room Type" Foreground="White"/>
+                    <TextBox Name="txtRoomType" Background="#545d6a" Foreground="Wheat" FontSize="18"/>
+
+
+                    <Separator/>
+                    <Separator></Separator>
+                    <Border CornerRadius="10" Background="#320b86" >
+                        <Button Width="280" Command="{Binding AddCommand}"  Height="40" VerticalAlignment="Bottom" FontSize="18" Background="#320b86" Foreground="White" >Confirm Reservation</Button>
+                    </Border>
+                    <Label Content="Reservations" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                    <Separator></Separator>
+                    <ListBox Name="listServices" ItemsSource="{Binding ReservationsList}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <Label Content="{Binding name}"/>
+                                    <Label Content="{Binding phone}"/>
+                                    <Label Content="{Binding check_in_date}"/>
+                                    <Label Content="{Binding check_out_date}"/>
+                                    <Label Content="{Binding state}"/>
+                                </WrapPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
+                </StackPanel>
+
+            </Border>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="iHotel.Views.EmployeeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.Views"
+        mc:Ignorable="d"
+        Title="iHotel - Employee Mode" WindowState="Maximized">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="\Utils\Hotel.jpg" Opacity="50"/>
+        </Grid.Background>
+
+        <Border Background="#2e3137" CornerRadius="20" Margin="20" Opacity="0.7">
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Name="btnRooms" Click="displayRooms" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Rooms" Foreground="White" FontSize="30" Margin="30 30" VerticalAlignment="Top" />
+                <Button Name="btnOffers" Click="displayOffers" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Offers/Promotions" Foreground="White" FontSize="30" Margin="30 30" VerticalAlignment="Top" />
+                <Button Name="btnServices" Click="showServices" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Services" Foreground="White" FontSize="30" Margin="30 30" VerticalAlignment="Top"/>
+                <Button Name="btnReservation" Click="showReservation" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Content="Reservations" Foreground="White" FontSize="30" Margin="30 30" VerticalAlignment="Top"/>
+                <Label Content="Employee mode" FontSize="30" Margin="30 30" VerticalAlignment="Top" Foreground="MediumVioletRed" FontWeight="Bold"></Label>
+            </StackPanel>
+        </Border>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="white" FontFamily="Courier" FontSize="100" FontStretch="Expanded" FontWeight="Thin" FontStyle="Oblique">iHotel</Label>
+        <Label HorizontalAlignment="Center"  Foreground="white" Margin="0,440,0,10" FontFamily="Courier" FontSize="22" FontStretch="Expanded"  FontStyle="Oblique" >Welcome to out hotel! Enjoy your staying!</Label>
+        <Label HorizontalAlignment="Center"  Foreground="white" Margin="0,471,0,-21" FontFamily="Courier" FontSize="35" FontStretch="Expanded"  FontStyle="Oblique" >~ H o l i d a y s .  w i t h .  a  . v i e w ~</Label>
+        
+
+    </Grid>
+
+</Window>

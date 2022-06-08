@@ -1,0 +1,59 @@
+﻿<Window x:Class="iHotel.Views.EditablePrices"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        xmlns:localConverter="clr-namespace:iHotel.Converters"
+        mc:Ignorable="d"
+        Title="Edit Prices" Height="750" Width="800" Background="#9a67ea">
+    <Window.DataContext>
+        <local:PricesViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Border Background="#2e3137" CornerRadius="20" Margin="20">
+            <StackPanel Margin="20">
+                <StackPanel.Resources>
+                    <localConverter:PricesConvert x:Key="serviceConvert"/>
+                </StackPanel.Resources>
+                <Label Content="Prices List" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+
+                <DataGrid Name="gridPrices" ItemsSource="{Binding PricesList}"  Margin="0,15,0,0" AutoGenerateColumns="False" Height="129"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Price" Binding="{Binding price1}"/>
+                        <DataGridTextColumn Header="Start Date:" Binding="{Binding check_in_date}"/>
+                        <DataGridTextColumn Header="End Date:" Binding="{Binding check_out_date}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                <Separator Height="10"></Separator>
+                <Label Content="Edit prices" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+                <Separator></Separator>
+                <Label Content="Price" Foreground="White" FontSize="20"/>
+                <Label Content="Please notice that the price is in euros" Foreground="LightGray"/>
+                <TextBox Name="txtPrice" Background="#545d6a" Foreground="Wheat" FontSize="18" 
+                         Text="{Binding ElementName=gridPrices, Path=SelectedItem.price1, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                <WrapPanel>
+                    <Label Name="lblMessage" Content="{Binding ErrorMessage}" Height="30" FontSize="15" Foreground="Red"/>
+                </WrapPanel>
+                <Label Content="Check-in date" Foreground="White" FontSize="20"/>
+                <DatePicker Name="checkIn" SelectedDate="{Binding ElementName=gridPrices, Path=SelectedItem.check_in_date, Mode=TwoWay}"></DatePicker>
+                <Label Content="Check-out date" Foreground="White" FontSize="20"/>
+                <DatePicker Name="checkOut" SelectedDate="{Binding ElementName=gridPrices, Path=SelectedItem.check_out_date, Mode=TwoWay}"></DatePicker>
+               
+                <Separator Height="10"></Separator>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="btnAddPrice" Command="{Binding AddCommand}" Content="Add Price" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18">
+                        
+                    </Button>
+                    
+                    <Button Content="Delete" Width="100" Height="30" Command="{Binding DeleteCommand}" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"
+                            CommandParameter="{Binding ElementName=gridPrices, Path=SelectedItem}" />
+                </StackPanel>
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Window>

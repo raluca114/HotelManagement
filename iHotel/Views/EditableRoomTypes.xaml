@@ -1,0 +1,102 @@
+﻿<Window x:Class="iHotel.Views.EditableRoomTypes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        xmlns:localConverter="clr-namespace:iHotel.Converters"
+        mc:Ignorable="d"
+        Title="Edit Room Types" Height="750" Width="1000" Background="#9a67ea">
+    <Window.DataContext>
+        <local:RoomTypesViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Border Background="#2e3137" CornerRadius="20" Margin="20">
+            <StackPanel Margin="20">
+                <StackPanel.Resources>
+                    <localConverter:RoomTypeConvert x:Key="roomTypeConvert"/>
+                </StackPanel.Resources>
+                <Label Content="Room Types " Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+                <Separator></Separator>
+                <DataGrid Name="gridRoomTypes" ItemsSource="{Binding RoomTypesList}"  Margin="0,15,0,0" AutoGenerateColumns="False" Height="150"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Type" Binding="{Binding type}" Width="130"/>
+                        <DataGridTextColumn Header="Image 1" Binding="{Binding image1}" Width="130"/>
+                        <DataGridTextColumn Header="Image 2" Binding="{Binding image2}" Width="130"/>
+                        <DataGridTextColumn Header="Capacity" Binding="{Binding capacity}" Width="130"/>
+                        <DataGridTextColumn Header="Number of rooms" Binding="{Binding nr_of_rooms}" Width="130"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price.price1}" Width="130"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                <Separator Height="10"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label Content="Type:      " Foreground="White" FontSize="20"/>
+                    <TextBox Name="txtRoomType" Background="#545d6a" Foreground="Wheat" FontSize="18" Width="300"
+                         Text="{Binding ElementName=gridRoomTypes, Path=SelectedItem.type, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                    <WrapPanel>
+                        <Label Name="lblMessage" Content="{Binding ErrorMessage}" Height="30" FontSize="15" Foreground="Red"/>
+                    </WrapPanel>
+                </StackPanel>
+                <Separator Height="10" Foreground="#2e3137"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label Content="Image 1: " Foreground="White" FontSize="20"/>
+                    <TextBox Name="txtRoomImage1" Background="#545d6a" Foreground="Wheat" FontSize="18"  Width="300"
+                         Text="{Binding ElementName=gridRoomTypes, Path=SelectedItem.image1, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                </StackPanel>
+                <Separator Height="10" Foreground="#2e3137"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label Content="Image 2: " Foreground="White" FontSize="20"/>
+                    <TextBox Name="txtRoomImage2" Background="#545d6a" Foreground="Wheat" FontSize="18" Width="300"
+                         Text="{Binding ElementName=gridRoomTypes, Path=SelectedItem.image2, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                </StackPanel>
+                <Separator Height="10" Foreground="#2e3137"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label Content="Capacity:" Foreground="White" FontSize="20"/>
+                    <TextBox Name="txtRoomCapacity" Background="#545d6a" Foreground="Wheat" FontSize="18" Width="300"
+                         Text="{Binding ElementName=gridRoomTypes, Path=SelectedItem.capacity, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <Separator Height="10" Foreground="#2e3137"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label Content="Number of rooms of this type: " Foreground="White" FontSize="20"/>
+                    <TextBox Name="txtNrOfRooms" Background="#545d6a" Foreground="Wheat" FontSize="18" Width="300"
+                         Text="{Binding ElementName=gridRoomTypes, Path=SelectedItem.nr_of_rooms, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                </StackPanel>
+                <Separator Height="10" Foreground="#2e3137"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label Content="Price:      " Foreground="White" FontSize="20"/>
+                    <TextBox Name="txtRoomPrice" Background="#545d6a" Foreground="Wheat" FontSize="18" Width="300"
+                         Text="{Binding ElementName=gridRoomTypes, Path=SelectedItem.price_id, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                </StackPanel>
+                <Separator Height="10"/>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    <Button Name="btnAddRoomType" Command="{Binding AddCommand}" Content="Add Room" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter ="{StaticResource roomTypeConvert}">
+                                <Binding ElementName="txtRoomType" Path="Text" />
+                                <Binding ElementName="txtRoomImage1" Path="Text" />
+                                <Binding ElementName="txtRoomImage2" Path="Text"/>
+                                <Binding ElementName="txtRoomCapacity" Path="Text" />
+                                <Binding ElementName="txtNrOfRooms" Path="Text"/>
+                                <Binding ElementName="txtRoomPrice" Path="Text"/>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button Content="Modify" Width="100" Height="30" Command="{Binding UpdateCommand}" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"
+                    CommandParameter="{Binding ElementName=gridRoomTypes, Path=SelectedItem}" />
+                    <Button Content="Delete" Width="100" Height="30" Command="{Binding DeleteCommand}" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"
+                    CommandParameter="{Binding ElementName=gridRoomTypes, Path=SelectedItem}" />
+                </StackPanel>
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Window>

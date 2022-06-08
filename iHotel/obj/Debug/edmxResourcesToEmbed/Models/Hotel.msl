@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="HotelEntities">
+    <EntitySetMapping Name="Accesses">
+      <EntityTypeMapping TypeName="HotelModel.Access">
+        <MappingFragment StoreEntitySet="Access">
+          <ScalarProperty Name="access_id" ColumnName="access_id" />
+          <ScalarProperty Name="access_level" ColumnName="access_level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Disponibilities">
+      <EntityTypeMapping TypeName="HotelModel.Disponibility">
+        <MappingFragment StoreEntitySet="Disponibility">
+          <ScalarProperty Name="disponibility_id" ColumnName="disponibility_id" />
+          <ScalarProperty Name="disponibility1" ColumnName="disponibility" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facilities">
+      <EntityTypeMapping TypeName="HotelModel.Facility">
+        <MappingFragment StoreEntitySet="Facility">
+          <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+          <ScalarProperty Name="facility1" ColumnName="facility" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offers">
+      <EntityTypeMapping TypeName="HotelModel.Offer">
+        <MappingFragment StoreEntitySet="Offer">
+          <ScalarProperty Name="offer_name" ColumnName="offer_name" />
+          <ScalarProperty Name="offer_description" ColumnName="offer_description" />
+          <ScalarProperty Name="room_type_id" ColumnName="room_type_id" />
+          <ScalarProperty Name="price_id" ColumnName="price_id" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="HotelModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="price_id" ColumnName="price_id" />
+          <ScalarProperty Name="price1" ColumnName="price" />
+          <ScalarProperty Name="check_in_date" ColumnName="check_in_date" />
+          <ScalarProperty Name="check_out_date" ColumnName="check_out_date" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="HotelModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="disponibility_id" ColumnName="disponibility_id" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomFacilities">
+      <EntityTypeMapping TypeName="HotelModel.RoomFacility">
+        <MappingFragment StoreEntitySet="RoomFacilities">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="room_id" ColumnName="room_id" />
+          <ScalarProperty Name="facility_id" ColumnName="facility_id" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypes">
+      <EntityTypeMapping TypeName="HotelModel.RoomType">
+        <MappingFragment StoreEntitySet="RoomType">
+          <ScalarProperty Name="room_type_id" ColumnName="room_type_id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="image1" ColumnName="image1" />
+          <ScalarProperty Name="image2" ColumnName="image2" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="nr_of_rooms" ColumnName="nr_of_rooms" />
+          <ScalarProperty Name="price_id" ColumnName="price_id" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="HotelModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="service_name" ColumnName="service_name" />
+          <ScalarProperty Name="service_price" ColumnName="service_price" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="HotelModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="access_id" ColumnName="access_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddNewFacility" FunctionName="HotelModel.Store.AddNewFacility" />
+    <FunctionImportMapping FunctionImportName="AddNewPrice" FunctionName="HotelModel.Store.AddNewPrice" />
+    <FunctionImportMapping FunctionImportName="AddRoomType" FunctionName="HotelModel.Store.AddRoomType" />
+    <FunctionImportMapping FunctionImportName="AddService" FunctionName="HotelModel.Store.AddService" />
+    <FunctionImportMapping FunctionImportName="DeleteFacility" FunctionName="HotelModel.Store.DeleteFacility" />
+    <FunctionImportMapping FunctionImportName="DeleteOffer" FunctionName="HotelModel.Store.DeleteOffer" />
+    <FunctionImportMapping FunctionImportName="DeleteRoomType" FunctionName="HotelModel.Store.DeleteRoomType" />
+    <FunctionImportMapping FunctionImportName="DeleteService" FunctionName="HotelModel.Store.DeleteService" />
+    <FunctionImportMapping FunctionImportName="GetAllOffersWithDetails" FunctionName="HotelModel.Store.GetAllOffersWithDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelModel.GetAllOffersWithDetails_Result">
+          <ScalarProperty Name="offer_name" ColumnName="offer_name" />
+          <ScalarProperty Name="offer_description" ColumnName="offer_description" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="image1" ColumnName="image1" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="nr_of_rooms" ColumnName="nr_of_rooms" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="check_in_date" ColumnName="check_in_date" />
+          <ScalarProperty Name="check_out_date" ColumnName="check_out_date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllReservations" FunctionName="HotelModel.Store.GetAllReservations" />
+    <FunctionImportMapping FunctionImportName="GetAllReservationsForUser" FunctionName="HotelModel.Store.GetAllReservationsForUser" />
+    <FunctionImportMapping FunctionImportName="GetAllRoomFacilities" FunctionName="HotelModel.Store.GetAllRoomFacilities" />
+    <FunctionImportMapping FunctionImportName="GetAllServices" FunctionName="HotelModel.Store.GetAllServices">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelModel.GetAllServices_Result">
+          <ScalarProperty Name="service_name" ColumnName="service_name" />
+          <ScalarProperty Name="service_price" ColumnName="service_price" />
+          <ScalarProperty Name="deleted" ColumnName="deleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllTypesOfRoomsWithPrices" FunctionName="HotelModel.Store.GetAllTypesOfRoomsWithPrices">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelModel.GetAllTypesOfRoomsWithPrices_Result">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="image1" ColumnName="image1" />
+          <ScalarProperty Name="image2" ColumnName="image2" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateFacility" FunctionName="HotelModel.Store.UpdateFacility" />
+    <FunctionImportMapping FunctionImportName="UpdateOffer" FunctionName="HotelModel.Store.UpdateOffer" />
+    <FunctionImportMapping FunctionImportName="UpdateReservation" FunctionName="HotelModel.Store.UpdateReservation" />
+    <FunctionImportMapping FunctionImportName="UpdateRoom" FunctionName="HotelModel.Store.UpdateRoom" />
+    <FunctionImportMapping FunctionImportName="UpdateService" FunctionName="HotelModel.Store.UpdateService" />
+    <FunctionImportMapping FunctionImportName="DeletePrice" FunctionName="HotelModel.Store.DeletePrice" />
+    <FunctionImportMapping FunctionImportName="GetAllPrices" FunctionName="HotelModel.Store.GetAllPrices">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="HotelModel.GetAllPrices_Result">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="check_in_date" ColumnName="check_in_date" />
+          <ScalarProperty Name="check_out_date" ColumnName="check_out_date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="HotelModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="room_type" ColumnName="room_type" />
+          <ScalarProperty Name="check_out_date" ColumnName="check_out_date" />
+          <ScalarProperty Name="check_in_date" ColumnName="check_in_date" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="reservation_id" ColumnName="reservation_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddReservation" FunctionName="HotelModel.Store.AddReservation" />
+    <FunctionImportMapping FunctionImportName="UpdateReservationStatus" FunctionName="HotelModel.Store.UpdateReservationStatus" />
+  </EntityContainerMapping>
+</Mapping>

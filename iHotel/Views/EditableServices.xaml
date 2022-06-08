@@ -1,0 +1,64 @@
+﻿<Window x:Class="iHotel.Views.EditableServices"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        xmlns:localConverter="clr-namespace:iHotel.Converters"
+        mc:Ignorable="d"
+        Title="Edit Services" Height="750" Width="800" Background="#9a67ea">
+    <Window.DataContext>
+        <local:ServicesViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Border Background="#2e3137" CornerRadius="20" Margin="20">
+        <StackPanel Margin="20">
+            <StackPanel.Resources>
+                <localConverter:ServiceConvert x:Key="serviceConvert"/>
+            </StackPanel.Resources>
+            <Label Content="Services List" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            
+                <DataGrid Name="gridServices" ItemsSource="{Binding ServicesList}"  Margin="0,15,0,0" AutoGenerateColumns="False" Height="250"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Service" Binding="{Binding service_name}"/>
+                    <DataGridTextColumn Header="Price" Binding="{Binding service_price}"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+                <Separator Height="10"></Separator>
+                <Label Content="Edit services" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
+            <Separator></Separator>
+            <Label Content="Service name" Foreground="White" FontSize="20"/>
+            <TextBox Name="txtServiceName" Background="#545d6a" Foreground="Wheat" FontSize="18" 
+                         Text="{Binding ElementName=gridServices, Path=SelectedItem.service_name, UpdateSourceTrigger=PropertyChanged}"
+                         />
+            <WrapPanel>
+                <Label Name="lblMessage" Content="{Binding ErrorMessage}" Height="30" FontSize="15" Foreground="Red"/>
+            </WrapPanel>
+            <Label Content="Service price" Foreground="White" FontSize="20"/>
+            <Label Content="Please notice that the price is in euros" Foreground="LightGray"/>
+            <TextBox Name="txtServicePrice" Background="#545d6a" Foreground="Wheat" FontSize="18" 
+                         Text="{Binding ElementName=gridServices, Path=SelectedItem.service_price, UpdateSourceTrigger=PropertyChanged}"
+                         />
+                <Separator Height="10"></Separator>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Name="btnAddService" Command="{Binding AddCommand}" Content="Add Service" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter ="{StaticResource serviceConvert}">
+                                <Binding ElementName="txtServiceName" Path="Text" />
+                                <Binding ElementName="txtServicePrice" Path="Text"/>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button Content="Modify" Width="100" Height="30" Command="{Binding UpdateCommand}" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"
+                    CommandParameter="{Binding ElementName=gridServices, Path=SelectedItem}" />
+                        <Button Content="Delete" Width="100" Height="30" Command="{Binding DeleteCommand}" Margin="60 10" Background="#545d6a" Foreground="White" FontSize="18"
+                            CommandParameter="{Binding ElementName=gridServices, Path=SelectedItem}" />
+                </StackPanel>
+            </StackPanel>
+
+    </Border>
+    </Grid>
+</Window>

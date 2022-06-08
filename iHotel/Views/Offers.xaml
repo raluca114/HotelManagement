@@ -1,0 +1,70 @@
+﻿<Window x:Class="iHotel.Views.Offers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iHotel.ViewModels"
+        xmlns:localConvertor="clr-namespace:iHotel.Converters"
+        mc:Ignorable="d"
+        Title="Offers" Height="650" Width="1200" Background="#9a67ea">
+    <Window.DataContext>
+        <local:OffersViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Margin="0,10,0,-10" Width="1180">
+            <Border Background="#2e3137" CornerRadius="20" Margin="20">
+                
+                <ItemsControl  ItemsSource="{Binding offersList}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackPanel HorizontalAlignment="Center" >
+                                <Label Content="{Binding offer_name}" FontSize="35" FontStyle="Italic" Foreground="MediumPurple" HorizontalAlignment="Center"></Label>
+                                <Label Content="{Binding offer_description}" FontSize="30" FontStyle="Italic" Foreground="White" HorizontalAlignment="Center"></Label>
+                                <Separator></Separator>
+                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                    <Label Content="Capacity:" Foreground="White"></Label>
+                                    <Label Content="{Binding RoomType.capacity}" Foreground="White"></Label>
+                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                    <Label Content="Number of rooms:" Foreground="White"></Label>
+                                    <Label Content="{Binding RoomType.nr_of_rooms}" Foreground="White"></Label>
+                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                    <Label Content="Price:" Foreground="White"></Label>
+                                    <Label Content="{Binding Price.price1}" Foreground="White"></Label>
+                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                    <Label Content="Starts:" Foreground="White"></Label>
+                                    <Label Content="{Binding Price.check_in_date}" Foreground="White"></Label>
+                                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                                    <Label Content="Ends:" Foreground="White"></Label>
+                                    <Label Content="{Binding Price.check_out_date}" Foreground="White"></Label>
+                                </StackPanel>
+
+                                <Button>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border>
+                                                <Image x:Name="image" Width="100" Height="100" Source="{Binding RoomType.image1}"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="image" Property="Width" Value="800"/>
+                                                    <Setter TargetName="image" Property="Height" Value="600"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Separator/>
+                            </StackPanel>
+                            
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </Border>
+        </ScrollViewer>
+        <Label Content="Note:" Foreground="White" Width="450" Height="50" FontSize="20" FontStyle="Italic" Margin="38,72,712,512"/>
+        <Label Content="All the prices are in euros." Foreground="White" Width="450" Height="50" FontSize="20" FontStyle="Italic" Margin="38,97,712,487"/>
+    </Grid>
+</Window>
